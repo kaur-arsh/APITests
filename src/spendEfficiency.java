@@ -13,6 +13,7 @@ public class spendEfficiency
 	@Test
 	public void spendReach()
 	{
+		System.out.println("### Running Spend Reach Test ###");
 		RestAssured.baseURI = Constants.stagingBase;
 		Response res =given().
 				header("content-type", "application/json").
@@ -39,6 +40,7 @@ public class spendEfficiency
 	@Test(priority=1)
 	public void spendCPMbyNetwork()
 	{
+		System.out.println("### Running spendCPMbyNetwork Test ###");
 		RestAssured.baseURI = Constants.stagingBase;
 		Response res = given().
 				header("content-type", "application/json").
@@ -60,6 +62,7 @@ public class spendEfficiency
 	@Test
 	public void spendCPMbyAudience()
 	{
+		System.out.println("### Running spendCPMbyAudience Test ###");
 		RestAssured.baseURI = Constants.stagingBase;
 		Response res = given().
 				header("content-type", "application/json").
