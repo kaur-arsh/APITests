@@ -7,7 +7,7 @@ public class CommercialDelivery {
 
 	@Test
 	public void overallDeliveryTrends() {
-
+		System.out.println("### Running Commercial Delivery Test ###");
 		RestAssured.baseURI = Constants.stagingBase;
 		// String payload =
 		// "{\"graph_key\":\"marketShare\",\"custom_color_map\":{},\"visualization_type\":\"stacked_bar_chart\",\"metrics\":[\"impressions\"],\"start\":\"2019-04-01\",\"end\":\"2019-04-30\",\"segmentations\":[\"program_genres\",\"brands\"],\"audiences\":[\"national_population\"],\"show_secondary\":false,\"niches\":[],\"verticals\":[],\"brands\":[],\"networks\":[],\"network_types\":[],\"network_owners\":[],\"program_genres\":[],\"display_name\":\"Market
