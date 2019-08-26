@@ -2,9 +2,9 @@ package com.utils;
 
 public class Constants {
 
-        public static final String devBase = "https://bain-media-lab-dev-api.thehive.ai/";
-        public static final String prodBase = "https://bain-media-lab-api.thehive.ai/";
-        public static final String stagingBase = "https://bain-media-lab-stg-api.thehive.ai/";
+        public static final String devBase = "https://dev-api.mensio.com/";
+        public static final String prodBase = "https://api.mensio.com/";
+        public static final String stagingBase = "https://stg-api.mensio.com/";
         public static final String contentType = "Content-Type";
         public static final String cookieType = "application/json";
 
@@ -22,8 +22,6 @@ public class Constants {
         public static final String networks = "api/brands/v2/getOptions/networks";
         public static final String adDurations = "api/brands/v2/getOptions/adDurations";
         public static final String logoTypes = "api/brands/v2/getOptions/logoTypes";
-
-        // DEPRECATED: public static final String logoAdDurations = "api/brands/v2/getOptions/logoAdDurations";
 
         public static final String verticals = "api/brands/v2/getOptions/verticals";
         public static final String metrics = "api/brands/v2/getOptions/metrics";

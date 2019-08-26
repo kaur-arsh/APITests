@@ -4,6 +4,7 @@
     <test name="Test">
         <classes>
             <class name="com.mensio.Login"/>
+            <class name="com.mensio.Options"/>
             <class name="com.mensio.CommercialDelivery"/>
         </classes>
     </test> <!-- Test -->
