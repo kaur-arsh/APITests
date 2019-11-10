@@ -5,3 +5,4 @@ test-output/
 /target/
 .DS_Store
 .idea/
+eclipse-java-google-style.xml
