@@ -1,66 +1,66 @@
 package com.mensio;
 
-import com.model.LoginInfo;
-import com.utils.Constants;
-import io.restassured.RestAssured;
-import static org.hamcrest.Matchers.equalTo;
-
-import io.restassured.response.Response;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import org.apache.http.HttpStatus;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import com.constants.Constants;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 
 public class Options {
 
-    @BeforeTest
+  @Test
+  public void getSegmentations() {
+    RestAssured.baseURI = Constants.STAGING_BASE;
+    String cookie = BeforeMethodCalls.getCookie();
+    Response res;
+    res = given().header("content-type", "application/json").header("Cookie", "nomnom=" + cookie)
+        .log().all().when().get(Constants.STAGING_BASE + Constants.segmentations).then()
+        .assertThat().statusCode(200).and().body("options[0].id", equalTo("brands")).extract()
+        .response();
+    ResponseBody body = res.getBody();
+  }
 
-    public String getCookie() {
-        LoginInfo userLoginInfo = new LoginInfo();
-        String cookie = userLoginInfo.getCookie();
-        return cookie;
-    }
+  @Test
+  public void getSegmentationsUnauthorized() {
+    RestAssured.baseURI = Constants.STAGING_BASE;
+    Response res = given().header("content-type", "application/json").header("Cookie", "nomnom=")
+        .log().all().when().get(Constants.STAGING_BASE + Constants.segmentations).thenReturn();
 
-    @Test
-    public void getSegmentations() {
-        RestAssured.baseURI = Constants.stagingBase;
-        String cookie = getCookie();
-        Response res;
-        res = given().header("content-type", "application/json")
-                .header("Cookie", "nomnom=" + cookie).log().all()
-                .when()
-                .get(Constants.stagingBase + Constants.segmentations)
-                .then()
-                .assertThat().statusCode(200).and().body("options[0].id", equalTo("brands")).extract().response();
+    Assert.assertEquals(HttpStatus.SC_UNAUTHORIZED, res.getStatusCode());
 
-    }
+    ResponseBody resBody = res.getBody();
+    Assert.assertNotNull(resBody);
+    // Assert.assertEquals(Segmentation.BRANDS.value(), resBody);
+    // .then().assertThat()
+    // .statusCode(HttpStatus.SC_UNAUTHORIZED).and().body("options[0].id", equalTo("brands"))
+    // .extract().response();
+  }
 
-    @Test
-    public void getVerticals() {
-        RestAssured.baseURI = Constants.stagingBase;
-        String cookie = getCookie();
-        Response res;
-        res = given().header("content-type", "application/json")
-                .header("Cookie", "nomnom=" + cookie).log().all()
-                .when()
-                .get(Constants.stagingBase + Constants.verticals)
-                .then()
-                .assertThat().statusCode(200).and().body("options[1].id", equalTo("retail")).extract().response();
+  @Test
+  public void getVerticals() {
+    RestAssured.baseURI = Constants.STAGING_BASE;
+    String cookie = BeforeMethodCalls.getCookie();
+    Response res;
+    res = given().header("content-type", "application/json").header("Cookie", "nomnom=" + cookie)
+        .log().all().when().get(Constants.STAGING_BASE + Constants.verticals).then().assertThat()
+        .statusCode(200).and().body("options[1].id", equalTo("retail")).extract().response();
 
-    }
+  }
 
-    @Test
-    public void getMetrics() {
-        RestAssured.baseURI = Constants.stagingBase;
-        String cookie = getCookie();
-        Response res;
-        res = given().header("content-type", "application/json")
-                .header("Cookie", "nomnom=" + cookie).log().all()
-                .when()
-                .get(Constants.stagingBase + Constants.metrics)
-                .then()
-                .assertThat().statusCode(200).and().body("options[21].id", equalTo("lift")).extract().response();
+  @Test
+  public void getMetrics() {
+    RestAssured.baseURI = Constants.STAGING_BASE;
+    String cookie = BeforeMethodCalls.getCookie();
+    Response res;
+    res = given().header("content-type", "application/json").header("Cookie", "nomnom=" + cookie)
+        .log().all().when().get(Constants.STAGING_BASE + Constants.metrics).then().assertThat()
+        .statusCode(200).and().body("options[22].id", equalTo("lift")).extract().response();
 
 
-    }
+
+  }
 }

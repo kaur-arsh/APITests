@@ -3,9 +3,8 @@
 <suite name="Suite" parallel="false">
     <test name="Test">
         <classes>
-            <class name="com.mensio.Login"/>
-            <class name="com.mensio.Options"/>
-            <class name="com.mensio.CommercialDelivery"/>
+            <class name="com.mensio.Login.LoginTest"/>
+            <class name="com.mensio.Brands.BrandsTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
