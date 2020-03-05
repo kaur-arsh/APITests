@@ -5,6 +5,8 @@
         <classes>
             <class name="com.mensio.Login.LoginTest"/>
             <class name="com.mensio.Brands.BrandsTest"/>
+            <class name="com.mensio.Audiences.AudienceTest"/>
+            <class name="com.mensio.ProgramGenres.ProgramGenreTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

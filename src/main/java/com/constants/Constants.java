@@ -22,6 +22,7 @@ public class Constants {
   public static final String networks = "api/brands/v2/getOptions/networks";
   public static final String adDurations = "api/brands/v2/getOptions/adDurations";
   public static final String logoTypes = "api/brands/v2/getOptions/logoTypes";
+  public static final String programGenres = "api/brands/v2/getOptions/programGenres";
 
   public static final String verticals = "api/brands/v2/getOptions/verticals";
   public static final String metrics = "api/brands/v2/getOptions/metrics";

@@ -1,6 +1,7 @@
 package com.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,4 +12,5 @@ public class LoginInfo {
   @Getter
   @Setter
   private static String cookie;
+
 }

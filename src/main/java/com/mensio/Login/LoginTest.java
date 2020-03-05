@@ -1,9 +1,11 @@
 package com.mensio.Login;
 
 import static io.restassured.RestAssured.given;
+
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.constants.Constants;
 import com.enums.LoginType;
 import com.mensio.Login.request.LoginRequest;
@@ -11,6 +13,7 @@ import com.mensio.Login.response.LoginFailure;
 import com.mensio.Login.response.LoginResponse;
 import com.model.LoginInfo;
 import com.utils.Utils;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -20,7 +23,7 @@ import io.restassured.response.Response;
 // Import Request class here
 public class LoginTest extends Constants {
 
-  public static String loginData;
+  public static String cookie;
 
   public static void main(String[] args) {
     // System.out.println("Login Cookie is = " + login());
@@ -43,12 +46,12 @@ public class LoginTest extends Constants {
         .statusCode(HttpStatus.SC_ACCEPTED).extract().response();
 
     LoginResponse loginResponse = res.as(LoginResponse.class);
-    String cookie = res.getCookie("NomNom");
+    cookie = res.getCookie("NomNom");
 
     Assert.assertNotNull(cookie);
     Assert.assertNotNull(loginResponse);
     Assert.assertNotNull(loginResponse.getUserRecord());
-    Assert.assertEquals(LoginType.basic, loginResponse.getUserRecord().getLoginType());
+    Assert.assertEquals(LoginType.admin, loginResponse.getUserRecord().getLoginType());
 
     LoginInfo.setCookie(cookie);
   }
